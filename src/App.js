@@ -1,26 +1,47 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { TextField } from "@material-ui/core";
+import Autocomplete from "@material-ui/lab/Autocomplete";
+import React from "react";
+import { connect, Provider } from "react-redux";
+import "./App.css";
+import { getCityList } from "./store/locationsReducer";
+import store from "./store/store";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+	componentDidMount() {
+		this.props.getCityList();
+	}
+
+	render() {
+		return (
+			<div className="App">
+				<Autocomplete
+					options={this.props.cities.map((city) => city.city_name)}
+					renderInput={(params) => (
+						<TextField
+							{...params}
+							label="city"
+							margin="normal"
+							variant="outlined"
+						/>
+					)}
+				/>
+				<div></div>
+			</div>
+		);
+	}
 }
 
-export default App;
+const mapStateToProps = (state) => ({
+	cities: state.locations.cities,
+});
+
+let AppContainer = connect(mapStateToProps, { getCityList })(App);
+const MainApp = () => {
+	return (
+		<Provider store={store}>
+			<AppContainer />
+		</Provider>
+	);
+};
+
+export default MainApp;
