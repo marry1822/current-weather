@@ -7,14 +7,16 @@ const instance = axios.create({
 });
 
 export const weatherAPI = {
-	getWeather() {
-		return instance.get(`?city=Raleigh,NC&key=${API_KEY}`);
+	async getWeather(cityName, countryCode) {
+		return await instance
+			.get(`?city=${cityName}&country=${countryCode}&key=${API_KEY}`)
+			.then((response) => response.data);
 	},
 };
 
 export const locationAPI = {
- getLocations() {
-		return instance
+	async getLocations() {
+		return await axios
 			.get("https://current-weather-api.herokuapp.com/cities")
 			.then((response) => response.data);
 	},
