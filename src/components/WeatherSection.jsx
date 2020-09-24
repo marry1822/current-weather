@@ -1,37 +1,36 @@
-import { Divider, TextField } from "@material-ui/core";
+import { Button, ButtonGroup, TextField } from "@material-ui/core";
 import Autocomplete from "@material-ui/lab/Autocomplete";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import classes from "../components/WeatherSection.module.css";
-import { getCityList } from "../store/locationsReducer";
 import { getWeatherData } from "../store/weatherReducer";
 import Preloader from "./preloader/Preloader";
-
+import WeatherData from "./WeatherData";
 
 const WeatherSection = (props) => {
-	useEffect(() => {
-		props.getCityList();
-	}, [props.getCityList]);
-
 	const onCitySelect = (value) => {
+		if (!value) {
+			return "";
+		}
 		props.getWeatherData(value.slice(0, -4), value.slice(-3, -1));
 	};
-
-	const [inputValue, setInputValue] = useState("");
+	const [value, setValue] = useState("");
 
 	return (
 		<div>
+			<ButtonGroup size="small" aria-label="small outlined button group">
+				<Button>Metric: °C, m/s</Button>
+				<Button>Imperial: °F, mph</Button>
+			</ButtonGroup>
 			<Autocomplete
 				options={props.cities.map(
 					(city) => `${city.city_name} (${city.country_code})`
 				)}
 				onChange={(event, value) => {
+					setValue(value);
 					onCitySelect(value);
 				}}
-				inputValue={inputValue}
-				onInputChange={(event, newInputValue) => {
-					setInputValue(newInputValue);
-				}}
+				style={{ width: 300 }}
 				renderInput={(params) => (
 					<TextField
 						{...params}
@@ -41,21 +40,9 @@ const WeatherSection = (props) => {
 					/>
 				)}
 			/>
-
-			{!inputValue && null}
-			{inputValue && !props.isFetching && (
-				<div>
-					<div>City: {props.weatherData.city_name}</div>
-					<div>
-						<div>Temp: {props.weatherData.app_temp}</div>
-						<div>{props.weatherData.lat}</div>
-						<div>{props.weatherData.weather.description}</div>
-						<img
-							src={`https://www.weatherbit.io/static/img/icons/${props.weatherData.weather.icon}.png`}
-							alt="icon"
-						/>
-					</div>
-				</div>
+			{props.isFetching && <Preloader />}
+			{value && !props.isFetching && (
+				<WeatherData weatherData={props.weatherData} />
 			)}
 		</div>
 	);
@@ -68,7 +55,6 @@ const mapStateToProps = (state) => ({
 });
 
 let WeatherSectionContainer = connect(mapStateToProps, {
-	getCityList,
 	getWeatherData,
 })(WeatherSection);
 

@@ -37,7 +37,6 @@ export const getWeatherData = (cityName, countryCode) => {
 		const response = await weatherAPI.getWeather(cityName, countryCode);
 		dispatch(setWeather(response.data[0]));
 		dispatch(toggleIsFetching(false));
-
 	};
 };
 

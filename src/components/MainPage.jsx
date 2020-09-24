@@ -1,13 +1,17 @@
 import React from "react";
 import classes from "../components/MainPage.module.css";
+import Footer from "./Footer";
+import Header from "./Header";
 import WeatherSectionContainer from "./WeatherSection";
-const MainPage = (props) => {
+
+const MainPage = () => {
 	return (
-		<div>
-			<div className={classes.header}>Weather app</div>
-			<div className={classes.about}>About</div>
-			<WeatherSectionContainer/>
-			<div className={classes.footer}>Footer</div>
+		<div className={classes.mainPage}>
+			<div className={classes.main}>
+				<Header />
+				<WeatherSectionContainer />
+			</div>
+			<Footer />
 		</div>
 	);
 };
