@@ -1,0 +1,21 @@
+.footerContainer{
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color:rgb(72,72,74);
+  flex: 0 0 auto;
+  color: #fff;
+}
+
+.contacts{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.contacts a{
+  text-decoration: none;
+  color: #fff;
+}

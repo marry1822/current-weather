@@ -2,7 +2,7 @@ import React from "react";
 import { connect, Provider } from "react-redux";
 import "./App.css";
 import store from "./store/store";
-import MainPage from "./components/MainPage";
+import MainPage from "./components/mainPage/MainPage";
 import { initializeApp } from "./store/appReducer";
 import Preloader from "./components/preloader/Preloader";
 

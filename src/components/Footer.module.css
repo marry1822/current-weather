@@ -1,8 +1,0 @@
-.footerContainer{
-  height: 100px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: pink;
-  flex: 0 0 auto;
-}

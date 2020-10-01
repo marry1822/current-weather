@@ -7,9 +7,9 @@ const instance = axios.create({
 });
 
 export const weatherAPI = {
-	async getWeather(cityName, countryCode, units="M") {
+	async getWeather(cityName, countryCode, units) {
 		return await instance
-			.get(`?city=${cityName}&country=${countryCode}&${units}=M&key=${API_KEY}`)
+			.get(`?city=${cityName}&country=${countryCode}&units=${units}&key=${API_KEY}`)
 			.then((response) => response.data);
 	},
 };

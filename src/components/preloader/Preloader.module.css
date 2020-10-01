@@ -18,7 +18,7 @@
 	width: 6px;
 	height: 18px;
 	border-radius: 20%;
-	background: #dd4b39;
+	background: rgb(72,72,74);
 }
 .ldsSpinner div:nth-child(1) {
 	transform: rotate(0deg);
@@ -82,4 +82,5 @@
 	z-index: 999;
 	left: 50%;
 	top: 50%;
+
 }
