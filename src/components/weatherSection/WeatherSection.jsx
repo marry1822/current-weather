@@ -98,6 +98,7 @@ const WeatherSection = (props) => {
 			</div>
 
 			{props.isFetching && <Preloader />}
+			{!value && <div>Choose the city to see the weather information...</div>}
 			{value && !props.isFetching && (
 				<WeatherData weatherData={props.weatherData} units={props.units} />
 			)}
