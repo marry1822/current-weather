@@ -1,21 +1,31 @@
-.footerContainer{
-  height: 80px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color:rgb(72,72,74);
-  flex: 0 0 auto;
-  color: #fff;
+.footerContainer {
+	height: 50px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: rgb(72, 72, 74);
+	flex: 0 0 auto;
+	color: #fff;
+	padding: 2px 20px;
 }
 
-.contacts{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+.footerContainer__contacts {
+	display: flex;
+	align-items: center;
 }
 
-.contacts a{
-  text-decoration: none;
-  color: #fff;
+.footerContainer__contactsLink {
+	text-decoration: none;
+	color: #fff;
+	display: flex;
+	align-items: center;
+	margin-left: 10px;
+}
+
+.footerContainer__contactsLink:hover{
+	color: #ecc695;
+}
+
+.footerContainer__contactsImg {
+	margin: 5px;
 }

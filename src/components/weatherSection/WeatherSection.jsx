@@ -19,8 +19,8 @@ const WeatherSection = (props) => {
 
 	return (
 		<div className={classes.weatherSection}>
-			<div className={classes.searchBlock}>
-				<div className={classes.searchBlockContainer}>
+			<div className={classes.weatherSection__searchBlock}>
+				<div className={classes.weatherSection__searchBlockContainer}>
 					<Autocomplete
 						options={props.cities.map(
 							(city) => `${city.city_name} (${city.country_code})`
@@ -39,36 +39,67 @@ const WeatherSection = (props) => {
 							/>
 						)}
 					/>
-					<ButtonGroup size="small" aria-label="small outlined button group">
-						<Button
-							onClick={() =>
-								props.getWeatherData(
-									value.slice(0, -4),
-									value.slice(-3, -1),
-									"metric"
-								)
-							}
+					{value ? (
+						<ButtonGroup size="small" aria-label="small outlined button group">
+							<Button
+								onClick={() =>
+									props.getWeatherData(
+										value.slice(0, -4),
+										value.slice(-3, -1),
+										"metric"
+									)
+								}
+							>
+								Metric: °C, m/s
+							</Button>
+							<Button
+								onClick={() =>
+									props.getWeatherData(
+										value.slice(0, -4),
+										value.slice(-3, -1),
+										"imperial"
+									)
+								}
+							>
+								Imperial: °F, mph
+							</Button>
+						</ButtonGroup>
+					) : (
+						<ButtonGroup
+							disabled
+							size="small"
+							aria-label="small outlined button group"
 						>
-							Metric: °C, m/s
-						</Button>
-						<Button
-							onClick={() =>
-								props.getWeatherData(
-									value.slice(0, -4),
-									value.slice(-3, -1),
-									"imperial"
-								)
-							}
-						>
-							Imperial: °F, mph
-						</Button>
-					</ButtonGroup>
+							<Button
+								onClick={() =>
+									props.getWeatherData(
+										value.slice(0, -4),
+										value.slice(-3, -1),
+										"metric"
+									)
+								}
+							>
+								Metric: °C, m/s
+							</Button>
+							<Button
+								onClick={() =>
+									props.getWeatherData(
+										value.slice(0, -4),
+										value.slice(-3, -1),
+										"imperial"
+									)
+								}
+							>
+								Imperial: °F, mph
+							</Button>
+						</ButtonGroup>
+					)}
 				</div>
 			</div>
 
 			{props.isFetching && <Preloader />}
 			{value && !props.isFetching && (
-				<WeatherData weatherData={props.weatherData} units={props.units}/>
+				<WeatherData weatherData={props.weatherData} units={props.units} />
 			)}
 		</div>
 	);
@@ -78,7 +109,7 @@ const mapStateToProps = (state) => ({
 	cities: state.locations.cities,
 	weatherData: state.weather.weatherData,
 	isFetching: state.weather.isFetching,
-	units: state.weather.units
+	units: state.weather.units,
 });
 
 let WeatherSectionContainer = connect(mapStateToProps, {

@@ -7,7 +7,7 @@ import WeatherSectionContainer from "../weatherSection/WeatherSection";
 const MainPage = () => {
 	return (
 		<div className={classes.mainPage}>
-			<div className={classes.mainContainer}>
+			<div className={classes.mainPage__container}>
 				<Header />
 				<WeatherSectionContainer />
 			</div>

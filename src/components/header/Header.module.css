@@ -1,13 +1,13 @@
-.headerContainer{
-  height: 80px;
-  display: flex;
-  align-items: center;
-  justify-content: start;
-  background-color:rgb(72,72,74);
-  margin-bottom: 40px;
+.headerContainer {
+	height: 80px;
+	display: flex;
+	align-items: center;
+	justify-content: start;
+	background-color: rgb(72, 72, 74);
+	margin-bottom: 40px;
 }
 
-.headerContainer img {
-  height: 80px;
-  margin-left: 20px;
+.headerContainer__img {
+	height: 80px;
+	margin-left: 100px;
 }

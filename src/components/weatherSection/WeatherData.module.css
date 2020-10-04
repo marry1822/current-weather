@@ -4,26 +4,27 @@
 	align-items: flex-start;
 	justify-content: center;
 	margin-bottom: 40px;
-	width: 60%;
+	width: 30%;
 }
 
-.locationName {
+.weatherData__locationName {
 	font-size: 30px;
 	font-weight: bold;
 	margin-bottom: 30px;
 }
 
-.tempEndIcon {
+.weatherData__tempEndIcon {
 	display: flex;
 	align-items: center;
 	font-size: 25px;
 	font-weight: bold;
 }
-.tempEndIcon img {
+
+.weatherData__tempEndIconImg {
 	width: 150px;
 }
 
-.weatherDescription {
+.weatherData__weatherDescription {
 	display: flex;
 	align-items: center;
 	font-size: 20px;
@@ -31,17 +32,19 @@
 	margin-bottom: 20px;
 }
 
-.otherInfo {
+.weatherData__otherInfo {
 	display: grid;
 	grid-template-rows: 1fr 1fr 1fr;
 }
 
-.block {
+.weatherData__otherInfoBlock {
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
 	justify-items: start;
+	grid-gap: 10px;
 	margin-bottom: 10px;
 }
 
-
-
+.weatherData__otherInfoBlock img{
+	margin-right: 5px;
+}
